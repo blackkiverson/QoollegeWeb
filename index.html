@@ -11,28 +11,28 @@
 </head>
 <body>
 
-  <!-- ===== SECTION 1: HEADER + HERO ===== -->
+  <!-- Header (outside hero for sticky) -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <img src="https://www.figma.com/api/mcp/asset/819d2723-68bd-4858-ae29-ad40c79c6fbd" alt="Qoollege">
+      </a>
+      <nav class="nav">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#athletes" class="nav-link">Athletes</a>
+        <a href="#transfers" class="nav-link">Transfers</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#qoollege-plus" class="nav-link">Qoollege+</a>
+      </nav>
+      <a href="#" class="btn btn-ghost">Sign-in</a>
+    </div>
+  </header>
+
+  <!-- ===== SECTION 1: HERO ===== -->
   <section class="hero-section">
     <!-- Background layers -->
     <div class="hero-bg-gradient"></div>
     <div class="hero-bg-icon"></div>
-
-    <!-- Header -->
-    <header class="header">
-      <div class="header-container">
-        <a href="#" class="logo">
-          <img src="https://www.figma.com/api/mcp/asset/819d2723-68bd-4858-ae29-ad40c79c6fbd" alt="Qoollege">
-        </a>
-        <nav class="nav">
-          <a href="#features" class="nav-link">Features</a>
-          <a href="#athletes" class="nav-link">Athletes</a>
-          <a href="#transfers" class="nav-link">Transfers</a>
-          <a href="#pricing" class="nav-link">Pricing</a>
-          <a href="#qoollege-plus" class="nav-link">Qoollege+</a>
-        </nav>
-        <a href="#" class="btn btn-ghost">Sign-in</a>
-      </div>
-    </header>
 
     <!-- Hero Content -->
     <div class="hero-content">
@@ -61,16 +61,18 @@
   <section class="stats-section">
     <!-- Image strip carousel -->
     <div class="image-strip-wrapper">
-      <div class="image-strip">
-        <div class="strip-image"><img src="https://www.figma.com/api/mcp/asset/7e4d5f64-6372-4816-a95e-43c4e4bf3bc8" alt="Student 1"></div>
-        <div class="strip-image"><img src="https://www.figma.com/api/mcp/asset/ed2e7fe8-8359-46c2-b014-8bda2a87d249" alt="Student 2"></div>
-        <div class="strip-image"><img src="https://www.figma.com/api/mcp/asset/208367e9-4107-4874-bdaf-0b68e85a0df0" alt="Student 3"></div>
-        <div class="strip-image"><img src="https://www.figma.com/api/mcp/asset/6ac5022b-dfcf-452d-b8a4-8b9417f9e78c" alt="Student 4"></div>
-        <!-- Duplicate for seamless loop -->
-        <div class="strip-image"><img src="https://www.figma.com/api/mcp/asset/7e4d5f64-6372-4816-a95e-43c4e4bf3bc8" alt="Student 1"></div>
-        <div class="strip-image"><img src="https://www.figma.com/api/mcp/asset/ed2e7fe8-8359-46c2-b014-8bda2a87d249" alt="Student 2"></div>
-        <div class="strip-image"><img src="https://www.figma.com/api/mcp/asset/208367e9-4107-4874-bdaf-0b68e85a0df0" alt="Student 3"></div>
-        <div class="strip-image"><img src="https://www.figma.com/api/mcp/asset/6ac5022b-dfcf-452d-b8a4-8b9417f9e78c" alt="Student 4"></div>
+      <div class="image-strip" id="imageStrip">
+        <!-- Clone set for infinite loop -->
+        <div class="strip-image clone"><img src="https://www.figma.com/api/mcp/asset/208367e9-4107-4874-bdaf-0b68e85a0df0" alt="Student 3"></div>
+        <div class="strip-image clone"><img src="https://www.figma.com/api/mcp/asset/6ac5022b-dfcf-452d-b8a4-8b9417f9e78c" alt="Student 4"></div>
+        <!-- Real items -->
+        <div class="strip-image" data-idx="0"><img src="https://www.figma.com/api/mcp/asset/7e4d5f64-6372-4816-a95e-43c4e4bf3bc8" alt="Student 1"></div>
+        <div class="strip-image" data-idx="1"><img src="https://www.figma.com/api/mcp/asset/ed2e7fe8-8359-46c2-b014-8bda2a87d249" alt="Student 2"></div>
+        <div class="strip-image" data-idx="2"><img src="https://www.figma.com/api/mcp/asset/208367e9-4107-4874-bdaf-0b68e85a0df0" alt="Student 3"></div>
+        <div class="strip-image" data-idx="3"><img src="https://www.figma.com/api/mcp/asset/6ac5022b-dfcf-452d-b8a4-8b9417f9e78c" alt="Student 4"></div>
+        <!-- Clone set for infinite loop -->
+        <div class="strip-image clone"><img src="https://www.figma.com/api/mcp/asset/7e4d5f64-6372-4816-a95e-43c4e4bf3bc8" alt="Student 1"></div>
+        <div class="strip-image clone"><img src="https://www.figma.com/api/mcp/asset/ed2e7fe8-8359-46c2-b014-8bda2a87d249" alt="Student 2"></div>
       </div>
     </div>
 
@@ -99,7 +101,7 @@
       <div class="where-header">
         <img src="https://www.figma.com/api/mcp/asset/30728ae1-c499-456e-9cd7-5247e6c721b6" alt="Ollie" class="ollie-icon">
         <div>
-          <h3 class="where-title">Hey! Where are you at right now?</h3>
+          <h3 class="where-title scroll-fade-up">Hey! Where are you at right now?</h3>
           <p class="where-subtitle">Ollie wants to point you in the right direction</p>
         </div>
       </div>
@@ -126,8 +128,8 @@
   <section class="features-section" id="features">
     <div class="features-container">
       <div class="features-header">
-        <h2 class="features-heading">Everything you need.</h2>
-        <h2 class="features-heading dim">Nothing you don't.</h2>
+        <h2 class="features-heading scroll-fade-up">Everything you need.</h2>
+        <h2 class="features-heading dim scroll-fade-up delay-1">Nothing you don't.</h2>
         <div class="feature-pills">
           <button class="pill">
             <img src="https://www.figma.com/api/mcp/asset/c1a242b8-ddac-4535-b363-1d5e381460c4" alt="" class="pill-icon">
@@ -202,8 +204,8 @@
   <!-- ===== SECTION 5: TESTIMONIALS ===== -->
   <section class="testimonials-section">
     <div class="testimonials-container">
-      <span class="testimonial-eyebrow">REAL STUDENTS, REAL RESULTS</span>
-      <h2 class="testimonial-heading">Don't take our word for it.</h2>
+      <span class="testimonial-eyebrow scroll-fade-up">REAL STUDENTS, REAL RESULTS</span>
+      <h2 class="testimonial-heading scroll-fade-up delay-1">Don't take our word for it.</h2>
       <div class="testimonial-card" id="testimonialCard">
         <p class="testimonial-quote" id="testimonialQuote">"I was SO lost before Qoollege. Ollie helped me realize I didn't have to pick between engineering and art — there were programs for both."</p>
         <div class="testimonial-footer">
@@ -233,7 +235,7 @@
   <!-- ===== SECTION 7: PRICING ===== -->
   <section class="pricing-section" id="pricing">
     <div class="pricing-container">
-      <h2 class="pricing-heading">Start free. Upgrade when you're<br>ready.</h2>
+      <h2 class="pricing-heading scroll-fade-up">Start free. Upgrade when you're<br>ready.</h2>
       <p class="pricing-sub">Hey! Where are you at right now? Ollie wants to point you in the right direction</p>
 
       <div class="pricing-cards">
@@ -294,10 +296,12 @@
     <img src="https://www.figma.com/api/mcp/asset/6aedbede-e7dd-4fcb-bc55-dfb9626651f6" alt="Graduation">
   </section>
 
+  <!-- ===== CTA + FOOTER WRAPPER ===== -->
+  <div class="cta-footer-wrapper">
   <!-- ===== SECTION 9: CTA ===== -->
   <section class="cta-section">
     <div class="cta-container">
-      <h2 class="cta-heading">Your future is waiting.<br>Let's go find it.</h2>
+      <h2 class="cta-heading shimmer-text scroll-fade-up">Your future is waiting.<br>Let's go find it.</h2>
       <p class="cta-sub">Join students who stopped stressing and started planning.</p>
       <a href="#" class="btn btn-ghost btn-lg">
         Start Your Journey — Free
@@ -308,20 +312,58 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
-    <div class="footer-bg"></div>
-    <div class="footer-content">
-      <div class="footer-top">
-        <img src="https://www.figma.com/api/mcp/asset/88ab4ee7-d75b-4e42-8631-b48903abb276" alt="Qoollege" class="footer-logo">
-        <div class="footer-contact">
-          <span>Contact Us</span>
-          <a href="mailto:info@qoollege.com">info@qoollege.com</a>
+    <div class="footer-main">
+      <div class="footer-grid">
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <img src="https://www.figma.com/api/mcp/asset/819d2723-68bd-4858-ae29-ad40c79c6fbd" alt="Qoollege" class="footer-logo">
+          <p class="footer-tagline">Empowering students with AI-powered college guidance, personalized recommendations, and expert counseling to find their perfect academic match.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.48a8.27 8.27 0 004.76 1.5V7.56a4.84 4.84 0 01-1-.87z" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z" fill="currentColor"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <a href="#" class="footer-link">Home</a>
+          <a href="#features" class="footer-link">Features</a>
+          <a href="#pricing" class="footer-link">Pricing</a>
+          <a href="#athletes" class="footer-link">For Athletes</a>
+          <a href="#transfers" class="footer-link">Transfers</a>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Resources</h4>
+          <a href="#" class="footer-link">Blog</a>
+          <a href="#" class="footer-link">Universities</a>
+          <a href="#qoollege-plus" class="footer-link">Qoollege+</a>
+          <a href="#" class="footer-link">Partner Program</a>
+        </div>
+
+        <!-- Get in Touch -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Get in Touch</h4>
+          <a href="mailto:info@qoollege.com" class="footer-link">info@qoollege.com</a>
+          <a href="#" class="footer-link footer-cta-link">Join Qoollege Today →</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Qoollege. All rights reserved. Empowering students since 2024.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <p class="footer-love">Made with ❤ for students</p>
     </div>
   </footer>
+  </div>
 
 <script>
 (function() {
@@ -639,6 +681,96 @@
   });
 })();
 
+// Image strip snap carousel with infinite loop
+(function() {
+  var strip = document.getElementById('imageStrip');
+  var allSlides = strip.querySelectorAll('.strip-image');
+  var realSlides = strip.querySelectorAll('.strip-image[data-idx]');
+  var total = realSlides.length; // 4
+  var clonesBefore = 2;
+  var current = 0; // index into real slides (0-3)
+  var timer = null;
+  var isTransitioning = false;
+
+  function getOffset(slideIndex) {
+    // slideIndex is position in allSlides array
+    var slide = allSlides[slideIndex];
+    var activeWidth = 480;
+    var inactiveWidth = 280;
+    var gap = 16;
+    var wrapperWidth = strip.parentElement.offsetWidth;
+
+    // Calculate offset: sum of widths before this slide, then center it
+    var offset = 0;
+    for (var i = 0; i < slideIndex; i++) {
+      offset += (i === slideIndex ? activeWidth : inactiveWidth) + gap;
+    }
+    // Center: offset - half wrapper + half active width
+    offset = offset - (wrapperWidth / 2) + (activeWidth / 2);
+    return -offset;
+  }
+
+  function activate(realIdx, animate) {
+    var slideIdx = realIdx + clonesBefore;
+    current = realIdx;
+
+    allSlides.forEach(function(s) { s.classList.remove('active'); });
+    allSlides[slideIdx].classList.add('active');
+
+    if (animate === false) {
+      strip.style.transition = 'none';
+    } else {
+      strip.style.transition = 'transform 0.6s ease';
+    }
+    strip.style.transform = 'translateX(' + getOffset(slideIdx) + 'px)';
+
+    if (animate === false) {
+      // Force reflow then restore transition
+      strip.offsetHeight;
+      strip.style.transition = 'transform 0.6s ease';
+    }
+  }
+
+  function next() {
+    if (isTransitioning) return;
+    var nextReal = current + 1;
+
+    if (nextReal >= total) {
+      // Animate to clone, then jump back
+      isTransitioning = true;
+      var cloneIdx = clonesBefore + total; // first clone after real
+      allSlides.forEach(function(s) { s.classList.remove('active'); });
+      allSlides[cloneIdx].classList.add('active');
+      strip.style.transition = 'transform 0.6s ease';
+      strip.style.transform = 'translateX(' + getOffset(cloneIdx) + 'px)';
+
+      setTimeout(function() {
+        isTransitioning = false;
+        activate(0, false);
+      }, 620);
+    } else {
+      activate(nextReal, true);
+    }
+  }
+
+  function startLoop() {
+    timer = setInterval(next, 3000);
+  }
+
+  // Click to select
+  realSlides.forEach(function(slide, i) {
+    slide.addEventListener('click', function() {
+      clearInterval(timer);
+      activate(i, true);
+      startLoop();
+    });
+  });
+
+  // Init
+  activate(0, false);
+  startLoop();
+})();
+
 // Scroll-triggered slide-up animation
 (function() {
   const observer = new IntersectionObserver(function(entries) {
@@ -657,6 +789,21 @@
 
   const statsRow = document.querySelector('.stats-row');
   if (statsRow) observer.observe(statsRow);
+})();
+
+// General scroll animation observer
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.scroll-fade-up').forEach(function(el) {
+    observer.observe(el);
+  });
 })();
 
 // Count-up animation
