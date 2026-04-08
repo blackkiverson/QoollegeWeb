@@ -77,19 +77,19 @@
     <!-- Stats row -->
     <div class="stats-row">
       <div class="stat">
-        <span class="stat-number">6,000+</span>
+        <span class="stat-number" data-count="6000" data-suffix="+">0+</span>
         <span class="stat-label">Colleges in our database</span>
       </div>
       <div class="stat">
-        <span class="stat-number">24/7</span>
+        <span class="stat-number" data-static="24/7">24/7</span>
         <span class="stat-label">AI guidance with Ollie</span>
       </div>
       <div class="stat">
-        <span class="stat-number">$2M+</span>
+        <span class="stat-number" data-count="2" data-prefix="$" data-suffix="M+">$0M+</span>
         <span class="stat-label">Scholarships matched</span>
       </div>
       <div class="stat">
-        <span class="stat-number">1,000+</span>
+        <span class="stat-number" data-count="1000" data-suffix="+">0+</span>
         <span class="stat-label">Transfer credit paths mapped</span>
       </div>
     </div>
@@ -119,6 +119,8 @@
       </div>
     </div>
   </section>
+
+  <div class="glow-divider"></div>
 
   <!-- ===== SECTION 3: EVERYTHING YOU NEED ===== -->
   <section class="features-section" id="features">
@@ -167,9 +169,14 @@
     </div>
   </section>
 
+  <div class="glow-divider glow-divider-purple"></div>
+
   <!-- ===== SECTION 4: TWO FEATURE CARDS ===== -->
+  <div class="dual-cards-wrapper">
   <section class="dual-cards-section" id="athletes">
     <div class="dual-card card-athletes">
+      <div class="dual-card-glow"><div class="dual-card-glow-mask"></div></div>
+      <div class="card-inner-bg"></div>
       <span class="card-eyebrow">STUDENT ATHLETES</span>
       <h2 class="card-heading">Get recruited.<br>Get the grades. Get in.</h2>
       <p class="card-desc">Recruiting coach, highlight reel editing, coach contact tracking, AND academic counseling — all in one platform. Others charge $13K+ for this. We do it for a fraction.</p>
@@ -179,6 +186,8 @@
       </a>
     </div>
     <div class="dual-card card-transfer" id="transfers">
+      <div class="dual-card-glow"><div class="dual-card-glow-mask"></div></div>
+      <div class="card-inner-bg"></div>
       <span class="card-eyebrow">TRANSFER STUDENTS</span>
       <h2 class="card-heading">Wrong school?<br>Right move. Let's fix it.</h2>
       <p class="card-desc">Whether you're at a community college mapping your path to a 4-year, or at a university that just isn't the right fit — we've got you. Credit estimates, transfer-friendly school matching, and a counselor who gets it.</p>
@@ -188,6 +197,7 @@
       </a>
     </div>
   </section>
+  </div>
 
   <!-- ===== SECTION 5: TESTIMONIALS ===== -->
   <section class="testimonials-section">
@@ -408,6 +418,25 @@
   const responseCta = document.getElementById('whereCta');
   const responseBox = document.getElementById('whereResponse');
   const cards = grid.querySelectorAll('.where-card');
+  const section = document.querySelector('.where-section');
+
+  function isMobile() {
+    return window.innerWidth <= 600;
+  }
+
+  function positionResponse(card) {
+    if (isMobile()) {
+      // Insert response right after the selected card inside the grid
+      card.after(responseBox);
+      responseBox.classList.add('inline');
+    } else {
+      // Move response back to the end of the section
+      if (responseBox.classList.contains('inline')) {
+        section.appendChild(responseBox);
+        responseBox.classList.remove('inline');
+      }
+    }
+  }
 
   cards.forEach(function(card) {
     card.addEventListener('click', function() {
@@ -417,14 +446,20 @@
       var idx = parseInt(card.dataset.index);
       var data = responses[idx];
 
-      // Animate out then in
       responseBox.classList.add('switching');
       setTimeout(function() {
         responseText.textContent = data.text;
         responseCta.textContent = data.cta;
+        positionResponse(card);
         responseBox.classList.remove('switching');
       }, 250);
     });
+  });
+
+  // On resize, reposition if needed
+  window.addEventListener('resize', function() {
+    var active = grid.querySelector('.where-card.active');
+    if (active) positionResponse(active);
   });
 })();
 
@@ -586,6 +621,24 @@
   startLoop();
 })();
 
+// Card glow mouse follow
+(function() {
+  document.querySelectorAll('.dual-card').forEach(function(card) {
+    var glow = card.querySelector('.dual-card-glow');
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', x + 'px');
+      card.style.setProperty('--mouse-y', y + 'px');
+      if (glow) {
+        glow.style.setProperty('--mouse-x', x + 'px');
+        glow.style.setProperty('--mouse-y', y + 'px');
+      }
+    });
+  });
+})();
+
 // Scroll-triggered slide-up animation
 (function() {
   const observer = new IntersectionObserver(function(entries) {
@@ -604,6 +657,43 @@
 
   const statsRow = document.querySelector('.stats-row');
   if (statsRow) observer.observe(statsRow);
+})();
+
+// Count-up animation
+(function() {
+  function formatNum(n) { return n.toLocaleString('en-US'); }
+
+  function animateCount(el) {
+    if (el.dataset.static) return;
+    var target = parseInt(el.dataset.count);
+    var prefix = el.dataset.prefix || '';
+    var suffix = el.dataset.suffix || '';
+    var duration = 2000;
+    var start = performance.now();
+
+    function update(now) {
+      var progress = Math.min((now - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = prefix + formatNum(Math.round(eased * target)) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        // Wait for slide-up to finish then count
+        setTimeout(function() {
+          entry.target.querySelectorAll('.stat-number[data-count]').forEach(animateCount);
+        }, 600);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  var row = document.querySelector('.stats-row');
+  if (row) observer.observe(row);
 })();
 </script>
 </body>
