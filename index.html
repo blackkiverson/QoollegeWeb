@@ -24,7 +24,14 @@
         <a href="#pricing" class="nav-link">Pricing</a>
         <a href="#qoollege-plus" class="nav-link">Qoollege+</a>
       </nav>
-      <a href="#" class="btn btn-ghost">Sign-in</a>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="theme-icon sun" width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="theme-icon moon" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a href="#" class="btn btn-ghost btn-header">Sign in</a>
+        <a href="#" class="btn btn-primary btn-header">Start Free</a>
+      </div>
     </div>
   </header>
 
@@ -44,15 +51,16 @@
         <div class="hero-buttons hero-fade" id="heroButtons">
           <a href="#" class="btn btn-primary btn-hero">
             Get Started – It's Free
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#features" class="btn btn-ghost btn-hero">See Features</a>
+          <a href="#features" class="btn btn-ghost btn-hero glass-shine">See Features</a>
         </div>
       </div>
 
       <!-- Scholarship Finder Preview Image -->
       <div class="finder-card">
-        <img src="assets/HeroImage.png" alt="Qoollege Scholarship Finder — Explore Financial Aids" class="finder-card-img">
+        <img src="assets/HeroImage.png" alt="Qoollege Scholarship Finder — Explore Financial Aids" class="finder-card-img finder-dark">
+        <img src="assets/HeroImageLight.png" alt="Qoollege Scholarship Finder — Explore Financial Aids" class="finder-card-img finder-light">
       </div>
     </div>
   </section>
@@ -184,7 +192,7 @@
       <p class="card-desc">Recruiting coach, highlight reel editing, coach contact tracking, AND academic counseling — all in one platform. Others charge $13K+ for this. We do it for a fraction.</p>
       <a href="#" class="btn btn-primary btn-md">
         Book Free Consultation
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
     <div class="dual-card card-transfer" id="transfers">
@@ -193,9 +201,9 @@
       <span class="card-eyebrow">TRANSFER STUDENTS</span>
       <h2 class="card-heading">Wrong school?<br>Right move. Let's fix it.</h2>
       <p class="card-desc">Whether you're at a community college mapping your path to a 4-year, or at a university that just isn't the right fit — we've got you. Credit estimates, transfer-friendly school matching, and a counselor who gets it.</p>
-      <a href="#" class="btn btn-ghost btn-md">
+      <a href="#" class="btn btn-primary btn-md">
         Sign Up
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </section>
@@ -241,6 +249,7 @@
       <div class="pricing-cards">
         <!-- Free Plan -->
         <div class="pricing-card">
+          <div class="card-glow"></div>
           <span class="plan-label">Explorer</span>
           <h3 class="plan-price">Free</h3>
           <p class="plan-desc">Forever. Seriously.</p>
@@ -255,6 +264,7 @@
 
         <!-- Pro Plan -->
         <div class="pricing-card featured">
+          <div class="card-glow"></div>
           <div class="popular-badge">MOST POPULAR</div>
           <span class="plan-label gradient-text">Pro</span>
           <h3 class="plan-price">$62 <span class="plan-period">/mo</span></h3>
@@ -274,6 +284,7 @@
 
         <!-- Human + AI Plan -->
         <div class="pricing-card" id="qoollege-plus">
+          <div class="card-glow"></div>
           <span class="plan-label green-text">Qoollege+</span>
           <h3 class="plan-price">Human + AI</h3>
           <p class="plan-desc">Dedicated counselor + full platform</p>
@@ -305,7 +316,7 @@
       <p class="cta-sub">Join students who stopped stressing and started planning.</p>
       <a href="#" class="btn btn-ghost btn-lg">
         Start Your Journey — Free
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
   </section>
@@ -369,7 +380,7 @@
 (function() {
   const parts = [
     { text: 'Your college journey.\n', cls: '' },
-    { text: 'Finally figured out!', cls: 'text-blue' }
+    { text: 'Finally figured out!', cls: 'text-gradient' }
   ];
 
   const heading = document.getElementById('heroHeading');
@@ -663,10 +674,10 @@
   startLoop();
 })();
 
-// Card glow mouse follow
+// Card glow mouse follow (dual cards + pricing cards)
 (function() {
-  document.querySelectorAll('.dual-card').forEach(function(card) {
-    var glow = card.querySelector('.dual-card-glow');
+  document.querySelectorAll('.dual-card, .pricing-card').forEach(function(card) {
+    var glow = card.querySelector('.dual-card-glow') || card.querySelector('.card-glow');
     card.addEventListener('mousemove', function(e) {
       var rect = card.getBoundingClientRect();
       var x = e.clientX - rect.left;
@@ -691,21 +702,17 @@
   var current = 0; // index into real slides (0-3)
   var timer = null;
   var isTransitioning = false;
+  var activeWidth = 480;
+  var inactiveWidth = 280;
+  var gap = 16;
 
   function getOffset(slideIndex) {
-    // slideIndex is position in allSlides array
-    var slide = allSlides[slideIndex];
-    var activeWidth = 480;
-    var inactiveWidth = 280;
-    var gap = 16;
     var wrapperWidth = strip.parentElement.offsetWidth;
-
-    // Calculate offset: sum of widths before this slide, then center it
     var offset = 0;
     for (var i = 0; i < slideIndex; i++) {
-      offset += (i === slideIndex ? activeWidth : inactiveWidth) + gap;
+      offset += inactiveWidth + gap;
     }
-    // Center: offset - half wrapper + half active width
+    // Center the active slide
     offset = offset - (wrapperWidth / 2) + (activeWidth / 2);
     return -offset;
   }
@@ -720,14 +727,13 @@
     if (animate === false) {
       strip.style.transition = 'none';
     } else {
-      strip.style.transition = 'transform 0.6s ease';
+      strip.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     }
     strip.style.transform = 'translateX(' + getOffset(slideIdx) + 'px)';
 
     if (animate === false) {
-      // Force reflow then restore transition
-      strip.offsetHeight;
-      strip.style.transition = 'transform 0.6s ease';
+      strip.offsetHeight; // force reflow
+      strip.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     }
   }
 
@@ -736,12 +742,11 @@
     var nextReal = current + 1;
 
     if (nextReal >= total) {
-      // Animate to clone, then jump back
       isTransitioning = true;
-      var cloneIdx = clonesBefore + total; // first clone after real
+      var cloneIdx = clonesBefore + total;
       allSlides.forEach(function(s) { s.classList.remove('active'); });
       allSlides[cloneIdx].classList.add('active');
-      strip.style.transition = 'transform 0.6s ease';
+      strip.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
       strip.style.transform = 'translateX(' + getOffset(cloneIdx) + 'px)';
 
       setTimeout(function() {
@@ -766,9 +771,15 @@
     });
   });
 
-  // Init
+  // Suppress all slide transitions on initial load, then enable
+  allSlides.forEach(function(s) { s.style.transition = 'none'; });
   activate(0, false);
-  startLoop();
+  // Force reflow, then restore slide transitions
+  strip.offsetHeight;
+  requestAnimationFrame(function() {
+    allSlides.forEach(function(s) { s.style.transition = ''; });
+    startLoop();
+  });
 })();
 
 // Scroll-triggered slide-up animation
@@ -841,6 +852,19 @@
 
   var row = document.querySelector('.stats-row');
   if (row) observer.observe(row);
+})();
+
+// Theme switcher
+(function() {
+  var toggle = document.getElementById('themeToggle');
+  var saved = localStorage.getItem('theme');
+  if (saved === 'light') document.body.classList.add('light-theme');
+
+  toggle.addEventListener('click', function() {
+    document.body.classList.toggle('light-theme');
+    var isLight = document.body.classList.contains('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
 })();
 </script>
 </body>
