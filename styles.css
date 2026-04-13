@@ -174,7 +174,7 @@ ul {
 
 .btn-primary {
   background: var(--gradient-primary);
-  color: var(--white);
+  color: #0f172a;
   padding: 16px 24px;
   backdrop-filter: blur(10px);
 }
@@ -204,6 +204,15 @@ ul {
     inset 0 -1px 0 rgba(255, 255, 255, 0.05),
     0 8px 24px rgba(0, 0, 0, 0.12),
     0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Purple gradient text for glass (btn-ghost) buttons */
+.btn-ghost-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .btn-lg {
@@ -619,6 +628,7 @@ ul {
   overflow: hidden;
   padding: 50px 0;
   position: relative;
+  perspective: 1800px;
 }
 
 .image-strip {
@@ -627,6 +637,7 @@ ul {
   align-items: center;
   transition: transform 0.6s ease;
   will-change: transform;
+  transform-style: preserve-3d;
 }
 
 .strip-image {
@@ -637,18 +648,49 @@ ul {
   flex-shrink: 0;
   border-radius: 20px;
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  opacity: 0.35;
-  filter: brightness(0.4) saturate(0.5);
-  transform: scale(0.85) rotateY(8deg);
+  opacity: 0.2;
+  filter: brightness(0.35) saturate(0.4);
+  transform: scale(0.78);
   cursor: pointer;
   border: 2px solid transparent;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Door-hinge neighbors — tilt inward toward the center active slide */
+.strip-image.prev {
+  opacity: 0.75;
+  filter: brightness(0.7) saturate(0.8);
+  transform-origin: right center;
+  transform: rotateY(42deg) scale(0.92);
+}
+
+.strip-image.next {
+  opacity: 0.75;
+  filter: brightness(0.7) saturate(0.8);
+  transform-origin: left center;
+  transform: rotateY(-42deg) scale(0.92);
+}
+
+.strip-image.far-prev {
+  opacity: 0.35;
+  filter: brightness(0.5) saturate(0.55);
+  transform-origin: right center;
+  transform: rotateY(58deg) scale(0.78);
+}
+
+.strip-image.far-next {
+  opacity: 0.35;
+  filter: brightness(0.5) saturate(0.55);
+  transform-origin: left center;
+  transform: rotateY(-58deg) scale(0.78);
 }
 
 .strip-image.active {
   width: 480px;
   opacity: 1;
   filter: brightness(1) saturate(1);
-  transform: scale(1) rotateY(0deg);
+  transform: scale(1) translateZ(20px);
   border-image: linear-gradient(135deg, var(--pink), var(--purple), var(--cyan)) 1;
   border-image: none;
   border-color: rgba(234, 152, 218, 0.4);
@@ -1038,10 +1080,8 @@ ul {
   font-family: var(--font-fig);
   font-weight: 600;
   font-size: 16px;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--white);
+  opacity: 0.5;
 }
 
 /* ===== DUAL CARDS SECTION ===== */
@@ -1264,7 +1304,7 @@ ul {
   display: block;
   font-family: var(--font-dm);
   font-size: 13px;
-  color: var(--green);
+  color: var(--blue-accent);
 }
 
 .testimonial-year {
