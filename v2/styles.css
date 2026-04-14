@@ -181,21 +181,28 @@ button {
 }
 
 .btn-outline-green {
-  background: transparent;
-  color: #f8f8fc;
-  border: 1px solid var(--mint);
+  background: linear-gradient(180deg, #6ef195 0%, #00e3fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  border: 1.5px solid #6ef195;
   font-weight: 600;
 }
 
 .btn-outline-green:hover {
-  background: rgba(110, 241, 149, 0.1);
-  border-color: var(--mint);
-  box-shadow: 0 0 20px rgba(110, 241, 149, 0.15);
+  background: linear-gradient(180deg, #6ef195 0%, #00e3fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  border-color: #00e3fd;
+  box-shadow: 0 0 20px rgba(110, 241, 149, 0.18);
 }
 
 .btn-hero-gradient {
   background: linear-gradient(122deg, rgb(161, 77, 144) 40%, rgb(36, 52, 184) 121%);
-  color: #ffffff;
+  color: #0b0d2b;
   border: none;
   font-weight: 700;
   box-shadow: 0 6px 22px rgba(91, 52, 184, 0.35);
@@ -390,7 +397,6 @@ button {
     inset -1px -1px 0 rgba(0, 0, 0, 0.12),
     0 20px 60px rgba(0, 0, 0, 0.3);
   position: relative;
-  overflow: hidden;
   text-align: left;
 }
 
@@ -495,6 +501,67 @@ button {
 .where-emoji {
   font-size: 18px;
   flex-shrink: 0;
+}
+
+/* Response card that appears below the grid when an option is selected */
+.where-response {
+  background: linear-gradient(90deg, rgba(110, 241, 149, 0.16) 0%, rgba(0, 227, 253, 0.06) 60%, transparent 100%);
+  border: 1px solid rgba(110, 241, 149, 0.28);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 14px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.where-response[style*="display:none"] {
+  display: none !important;
+}
+
+.where-response.switching {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.where-response-text {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--white-80);
+  margin: 0;
+}
+
+.where-cta-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  background: rgba(110, 241, 149, 0.10);
+  border: 1px solid rgba(110, 241, 149, 0.35);
+  color: #6ef195;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.where-cta-btn:hover {
+  background: rgba(110, 241, 149, 0.20);
+  border-color: rgba(110, 241, 149, 0.55);
+}
+
+@media (max-width: 520px) {
+  .where-response {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }
 
 @media (max-width: 640px) {

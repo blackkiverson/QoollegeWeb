@@ -127,14 +127,43 @@
   nums.forEach(function (n) { obs.observe(n); });
 })();
 
-/* ===== "Where are you at right now?" — single-select highlight ===== */
+/* ===== "Where are you at right now?" — single-select + green response card ===== */
 (function () {
   var opts = document.querySelectorAll('.where-option');
   if (!opts.length) return;
+
+  var responses = [
+    { text: "You're not alone — most students feel that way. Ollie can walk you through the entire process step by step, from building your college list to submitting your apps.", cta: "Get Started – It's Free →" },
+    { text: "Nice — you're in the thick of it. Our Essay Genie helps you write standout essays in your voice, and the Task Board keeps every deadline on track.", cta: "Try Essay Genie →" },
+    { text: "We've got recruiting coaches, highlight reel editing, coach contact tracking, AND academic counseling — all in one platform. Others charge $13K+ for this.", cta: "Book Free Consultation →" },
+    { text: "Our Scholarship Finder matches you to thousands of financial aid opportunities based on your background, identity, and goals. Stack them to cover your full tuition.", cta: "Find Scholarships →" },
+    { text: "Whether you're at a school that isn't the right fit or mapping credits from community college — we handle transfer-friendly matching, credit estimates, and counseling.", cta: "Explore Transfer Options →" },
+    { text: "That's totally okay. Our Discovery tools help you explore majors, career paths, and programs until something clicks. No pressure, just possibilities.", cta: "Start Exploring →" },
+    { text: "Let's make it happen. We'll help you build the strongest application possible — from essay strategy to interview prep to financial aid optimization.", cta: "Build Your Strategy →" },
+    { text: "Smart move. We'll map your credits, find transfer-friendly schools that match your goals, and make sure nothing gets lost in the process.", cta: "Map Your Credits →" }
+  ];
+
+  var responseBox = document.getElementById('whereResponse');
+  var responseText = document.getElementById('whereResponseText');
+  var responseCta = document.getElementById('whereCta');
+
   opts.forEach(function (b) {
     b.addEventListener('click', function () {
       opts.forEach(function (o) { o.classList.remove('active'); });
       b.classList.add('active');
+
+      var idx = parseInt(b.dataset.idx, 10);
+      var data = responses[idx] || responses[0];
+
+      if (responseBox) {
+        responseBox.classList.add('switching');
+        setTimeout(function () {
+          responseText.textContent = data.text;
+          if (responseCta) responseCta.textContent = data.cta;
+          responseBox.style.display = 'flex';
+          responseBox.classList.remove('switching');
+        }, 220);
+      }
     });
   });
 })();
