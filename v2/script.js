@@ -139,6 +139,24 @@
   });
 })();
 
+/* ===== Pricing card mouse-follow glow (from v1) ===== */
+(function () {
+  document.querySelectorAll('.pricing-card').forEach(function (card) {
+    var glow = card.querySelector('.card-glow');
+    card.addEventListener('mousemove', function (e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', x + 'px');
+      card.style.setProperty('--mouse-y', y + 'px');
+      if (glow) {
+        glow.style.setProperty('--mouse-x', x + 'px');
+        glow.style.setProperty('--mouse-y', y + 'px');
+      }
+    });
+  });
+})();
+
 /* ===== Smooth anchor offset for sticky nav ===== */
 (function () {
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
