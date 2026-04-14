@@ -186,8 +186,24 @@ button {
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  border: 1.5px solid #6ef195;
+  border: none;
   font-weight: 600;
+  position: relative;
+}
+
+.btn-outline-green::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(180deg, #6ef195 0%, #00e3fd 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .btn-outline-green:hover {
@@ -196,7 +212,6 @@ button {
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  border-color: #00e3fd;
   box-shadow: 0 0 20px rgba(110, 241, 149, 0.18);
 }
 
