@@ -91,7 +91,7 @@
   }
 
   function startLoop() {
-    timer = setInterval(next, 3000);
+    timer = setInterval(next, 1800);
   }
 
   // Note: carousel is auto-playing / non-interactive by design — no click handlers,
