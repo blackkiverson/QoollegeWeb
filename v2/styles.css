@@ -216,16 +216,16 @@ button {
 }
 
 .btn-hero-gradient {
-  background: linear-gradient(122deg, rgb(161, 77, 144) 40%, rgb(36, 52, 184) 121%);
+  background: linear-gradient(110deg, rgb(234, 152, 218) 40%, rgb(91, 108, 249) 121%);
   color: #0b0d2b;
   border: none;
   font-weight: 700;
-  box-shadow: 0 6px 22px rgba(91, 52, 184, 0.35);
+  box-shadow: 0 6px 22px rgba(91, 108, 249, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 .btn-hero-gradient:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(91, 52, 184, 0.5);
+  box-shadow: 0 12px 32px rgba(91, 108, 249, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 /* ===== NAV ===== */
@@ -590,6 +590,167 @@ button {
 
   .where-title {
     font-size: 17px;
+  }
+}
+
+/* ===== IMAGE CAROUSEL (3D cylindrical carousel) ===== */
+.carousel-section {
+  padding: 80px 0 40px;
+  overflow: hidden;
+  perspective: 900px;
+  perspective-origin: 50% 70%;
+  position: relative;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-strip {
+  position: relative;
+  width: 260px;
+  height: 360px;
+  transform-style: preserve-3d;
+  transform: rotateX(-15deg) rotateY(0deg);
+  transition: transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-slide {
+  --slab-thickness: 40px;
+  --slab-half: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 360px;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  cursor: pointer;
+  transition: filter 1s ease, opacity 1s ease, scale 1s ease;
+}
+
+/* Shared: every face of the slab */
+.slab-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  backface-visibility: visible;
+}
+
+.slab-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Front face (the image) — pushed forward by half-thickness */
+.slab-front {
+  transform: translateZ(var(--slab-half));
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* Back face — translucent tinted glass, pushed backward */
+.slab-back {
+  transform: translateZ(calc(-1 * var(--slab-half))) rotateY(180deg);
+  background: linear-gradient(135deg,
+      rgba(234, 152, 218, 0.22),
+      rgba(139, 92, 246, 0.18),
+      rgba(0, 227, 253, 0.18));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 40px rgba(255, 255, 255, 0.08);
+}
+
+/* Left edge — thin panel in the YZ plane on the card's left side */
+.slab-left {
+  width: var(--slab-thickness);
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: center center;
+  transform: translateX(calc(-1 * var(--slab-half))) rotateY(-90deg);
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(200, 210, 255, 0.40) 50%,
+      rgba(255, 255, 255, 0.35) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+/* Right edge */
+.slab-right {
+  width: var(--slab-thickness);
+  height: 100%;
+  top: 0;
+  left: calc(100% - var(--slab-thickness));
+  transform-origin: center center;
+  transform: translateX(var(--slab-half)) rotateY(90deg);
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(200, 210, 255, 0.40) 50%,
+      rgba(255, 255, 255, 0.35) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+/* Top edge */
+.slab-top {
+  width: 100%;
+  height: var(--slab-thickness);
+  top: 0;
+  left: 0;
+  transform-origin: center center;
+  transform: translateY(calc(-1 * var(--slab-half))) rotateX(90deg);
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(200, 210, 255, 0.40) 50%,
+      rgba(255, 255, 255, 0.35) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Bottom edge */
+.slab-bottom {
+  width: 100%;
+  height: var(--slab-thickness);
+  top: calc(100% - var(--slab-thickness));
+  left: 0;
+  transform-origin: center center;
+  transform: translateY(var(--slab-half)) rotateX(-90deg);
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.40) 0%,
+      rgba(200, 210, 255, 0.30) 50%,
+      rgba(255, 255, 255, 0.25) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+/* Gradient glow on the active (front-most) slide — via box-shadow on front face */
+.carousel-slide.is-front .slab-front {
+  box-shadow:
+    0 0 0 2px rgba(234, 152, 218, 0.45),
+    0 0 30px rgba(139, 92, 246, 0.35),
+    0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    height: 480px;
+  }
+
+  .carousel-strip {
+    width: 180px;
+    height: 260px;
+  }
+
+  .carousel-slide {
+    width: 180px;
+    height: 260px;
   }
 }
 

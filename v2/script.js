@@ -1,5 +1,77 @@
 /* Qoollege v2 — script (isolated; does not share state with v1) */
 
+/* ===== 3D cylindrical carousel ===== */
+(function () {
+  var strip = document.getElementById('carouselStrip');
+  if (!strip) return;
+
+  var slides = Array.prototype.slice.call(strip.querySelectorAll('.carousel-slide'));
+  if (!slides.length) return;
+
+  var total = slides.length;
+  var angleStep = 360 / total;
+  var RADIUS_DESKTOP = 620;
+  var RADIUS_MOBILE = 340;
+  var TILT_X = -15; // worm's-eye tilt (deg)
+  var current = 0;
+
+  function getRadius() {
+    return window.innerWidth <= 768 ? RADIUS_MOBILE : RADIUS_DESKTOP;
+  }
+
+  function layoutSlides() {
+    var R = getRadius();
+    slides.forEach(function (s, i) {
+      var a = i * angleStep;
+      s.style.transform = 'rotateY(' + a + 'deg) translateZ(' + R + 'px)';
+    });
+  }
+
+  function updateFrontHighlight() {
+    slides.forEach(function (s, i) {
+      s.classList.remove('is-front');
+      // angular distance from front: 0 (front) to 180 (back)
+      var relAngle = ((i - current) * angleStep + 360) % 360;
+      if (relAngle > 180) relAngle = 360 - relAngle;
+      var t = relAngle / 180; // 0 front → 1 back
+      var brightness = 1 - t * 0.85;    // back cards very dark
+      var blur = (t * t) * 6;           // eased blur — front sharp, back blurry
+      var opacity = 1 - t * 0.55;       // back cards fade into fog
+      var scale = 1 - t * 0.45;         // back cards shrink to ~55% size
+      s.style.filter = 'brightness(' + brightness.toFixed(2) + ') blur(' + blur.toFixed(1) + 'px)';
+      s.style.opacity = opacity.toFixed(2);
+      s.style.scale = scale.toFixed(3);
+      s.style.zIndex = String(100 - Math.round(t * 100));
+    });
+    slides[current].classList.add('is-front');
+  }
+
+  function rotateTo(idx) {
+    current = ((idx % total) + total) % total;
+    var rotY = -current * angleStep;
+    strip.style.transform = 'rotateX(' + TILT_X + 'deg) rotateY(' + rotY + 'deg)';
+    updateFrontHighlight();
+  }
+
+  slides.forEach(function (slide, i) {
+    slide.addEventListener('click', function () {
+      rotateTo(i);
+    });
+  });
+
+  layoutSlides();
+  rotateTo(0);
+
+  setInterval(function () {
+    rotateTo(current + 1);
+  }, 3000);
+
+  window.addEventListener('resize', function () {
+    layoutSlides();
+    rotateTo(current);
+  });
+})();
+
 /* ===== Testimonials carousel ===== */
 (function () {
   var stage = document.getElementById('testimonialStage');
