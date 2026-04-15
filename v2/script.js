@@ -1,74 +1,120 @@
 /* Qoollege v2 — script (isolated; does not share state with v1) */
 
-/* ===== 3D cylindrical carousel ===== */
+/* ===== Image strip snap carousel with infinite loop (v1-style) ===== */
 (function () {
   var strip = document.getElementById('carouselStrip');
   if (!strip) return;
 
-  var slides = Array.prototype.slice.call(strip.querySelectorAll('.carousel-slide'));
-  if (!slides.length) return;
+  var allSlides = strip.querySelectorAll('.strip-image');
+  var realSlides = strip.querySelectorAll('.strip-image[data-idx]');
+  if (!realSlides.length) return;
 
-  var total = slides.length;
-  var angleStep = 360 / total;
-  var RADIUS_DESKTOP = 620;
-  var RADIUS_MOBILE = 340;
-  var TILT_X = -15; // worm's-eye tilt (deg)
-  var current = 0;
+  var total = realSlides.length; // 4
+  var clonesBefore = 2;
+  var current = 0; // index into real slides (0-3)
+  var timer = null;
+  var isTransitioning = false;
+  var activeWidth = 480;
+  var inactiveWidth = 280;
+  var gap = 16;
 
-  function getRadius() {
-    return window.innerWidth <= 768 ? RADIUS_MOBILE : RADIUS_DESKTOP;
+  function isMobile() {
+    return window.innerWidth <= 768;
   }
 
-  function layoutSlides() {
-    var R = getRadius();
-    slides.forEach(function (s, i) {
-      var a = i * angleStep;
-      s.style.transform = 'rotateY(' + a + 'deg) translateZ(' + R + 'px)';
+  function getWidths() {
+    if (isMobile()) return { active: 280, inactive: 180 };
+    return { active: activeWidth, inactive: inactiveWidth };
+  }
+
+  function getOffset(slideIndex) {
+    var wrapperWidth = strip.parentElement.offsetWidth;
+    var w = getWidths();
+    var offset = 0;
+    for (var i = 0; i < slideIndex; i++) {
+      offset += w.inactive + gap;
+    }
+    // Center the active slide
+    offset = offset - (wrapperWidth / 2) + (w.active / 2);
+    return -offset;
+  }
+
+  function applyPositions(centerSlideIdx) {
+    allSlides.forEach(function (s, i) {
+      s.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
+      var delta = i - centerSlideIdx;
+      if (delta === 0) s.classList.add('active');
+      else if (delta === -1) s.classList.add('prev');
+      else if (delta === 1) s.classList.add('next');
+      else if (delta === -2) s.classList.add('far-prev');
+      else if (delta === 2) s.classList.add('far-next');
     });
   }
 
-  function updateFrontHighlight() {
-    slides.forEach(function (s, i) {
-      s.classList.remove('is-front');
-      // angular distance from front: 0 (front) to 180 (back)
-      var relAngle = ((i - current) * angleStep + 360) % 360;
-      if (relAngle > 180) relAngle = 360 - relAngle;
-      var t = relAngle / 180; // 0 front → 1 back
-      var brightness = 1 - t * 0.85;    // back cards very dark
-      var blur = (t * t) * 6;           // eased blur — front sharp, back blurry
-      var opacity = 1 - t * 0.55;       // back cards fade into fog
-      var scale = 1 - t * 0.45;         // back cards shrink to ~55% size
-      s.style.filter = 'brightness(' + brightness.toFixed(2) + ') blur(' + blur.toFixed(1) + 'px)';
-      s.style.opacity = opacity.toFixed(2);
-      s.style.scale = scale.toFixed(3);
-      s.style.zIndex = String(100 - Math.round(t * 100));
-    });
-    slides[current].classList.add('is-front');
+  function activate(realIdx, animate) {
+    var slideIdx = realIdx + clonesBefore;
+    current = realIdx;
+
+    applyPositions(slideIdx);
+
+    if (animate === false) {
+      strip.style.transition = 'none';
+    } else {
+      strip.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    }
+    strip.style.transform = 'translateX(' + getOffset(slideIdx) + 'px)';
+
+    if (animate === false) {
+      strip.offsetHeight; // force reflow
+      strip.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    }
   }
 
-  function rotateTo(idx) {
-    current = ((idx % total) + total) % total;
-    var rotY = -current * angleStep;
-    strip.style.transform = 'rotateX(' + TILT_X + 'deg) rotateY(' + rotY + 'deg)';
-    updateFrontHighlight();
+  function next() {
+    if (isTransitioning) return;
+    var nextReal = current + 1;
+
+    if (nextReal >= total) {
+      isTransitioning = true;
+      var cloneIdx = clonesBefore + total;
+      applyPositions(cloneIdx);
+      strip.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      strip.style.transform = 'translateX(' + getOffset(cloneIdx) + 'px)';
+
+      setTimeout(function () {
+        isTransitioning = false;
+        activate(0, false);
+      }, 620);
+    } else {
+      activate(nextReal, true);
+    }
   }
 
-  slides.forEach(function (slide, i) {
+  function startLoop() {
+    timer = setInterval(next, 3000);
+  }
+
+  // Click to select
+  realSlides.forEach(function (slide, i) {
     slide.addEventListener('click', function () {
-      rotateTo(i);
+      clearInterval(timer);
+      activate(i, true);
+      startLoop();
     });
   });
 
-  layoutSlides();
-  rotateTo(0);
-
-  setInterval(function () {
-    rotateTo(current + 1);
-  }, 3000);
+  // Suppress all slide transitions on initial load, then enable
+  allSlides.forEach(function (s) { s.style.transition = 'none'; });
+  activate(0, false);
+  // Force reflow, then restore slide transitions
+  strip.offsetHeight;
+  requestAnimationFrame(function () {
+    allSlides.forEach(function (s) { s.style.transition = ''; });
+    startLoop();
+  });
 
   window.addEventListener('resize', function () {
-    layoutSlides();
-    rotateTo(current);
+    activate(current, false);
   });
 })();
 

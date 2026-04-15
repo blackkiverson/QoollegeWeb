@@ -101,74 +101,21 @@
     </div>
   </section>
 
-  <!-- ===== IMAGE CAROUSEL (Cover Flow) ===== -->
+  <!-- ===== IMAGE CAROUSEL (v1-style horizontal strip with door-hinge neighbors) ===== -->
   <section class="carousel-section">
-    <div class="carousel-wrapper">
-      <div class="carousel-strip" id="carouselStrip">
-        <div class="carousel-slide">
-          <div class="slab-face slab-front"><img src="assets/carousel-basketball.jpg" alt="High school basketball player"></div>
-          <div class="slab-face slab-back"></div>
-          <div class="slab-face slab-left"></div>
-          <div class="slab-face slab-right"></div>
-          <div class="slab-face slab-top"></div>
-          <div class="slab-face slab-bottom"></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slab-face slab-front"><img src="assets/carousel-lab.jpg" alt="Students in science lab"></div>
-          <div class="slab-face slab-back"></div>
-          <div class="slab-face slab-left"></div>
-          <div class="slab-face slab-right"></div>
-          <div class="slab-face slab-top"></div>
-          <div class="slab-face slab-bottom"></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slab-face slab-front"><img src="assets/carousel-campus.jpg" alt="Students on campus"></div>
-          <div class="slab-face slab-back"></div>
-          <div class="slab-face slab-left"></div>
-          <div class="slab-face slab-right"></div>
-          <div class="slab-face slab-top"></div>
-          <div class="slab-face slab-bottom"></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slab-face slab-front"><img src="assets/carousel-sport.jpg" alt="Basketball player dunking"></div>
-          <div class="slab-face slab-back"></div>
-          <div class="slab-face slab-left"></div>
-          <div class="slab-face slab-right"></div>
-          <div class="slab-face slab-top"></div>
-          <div class="slab-face slab-bottom"></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slab-face slab-front"><img src="assets/carousel-basketball.jpg" alt="High school basketball player"></div>
-          <div class="slab-face slab-back"></div>
-          <div class="slab-face slab-left"></div>
-          <div class="slab-face slab-right"></div>
-          <div class="slab-face slab-top"></div>
-          <div class="slab-face slab-bottom"></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slab-face slab-front"><img src="assets/carousel-lab.jpg" alt="Students in science lab"></div>
-          <div class="slab-face slab-back"></div>
-          <div class="slab-face slab-left"></div>
-          <div class="slab-face slab-right"></div>
-          <div class="slab-face slab-top"></div>
-          <div class="slab-face slab-bottom"></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slab-face slab-front"><img src="assets/carousel-campus.jpg" alt="Students on campus"></div>
-          <div class="slab-face slab-back"></div>
-          <div class="slab-face slab-left"></div>
-          <div class="slab-face slab-right"></div>
-          <div class="slab-face slab-top"></div>
-          <div class="slab-face slab-bottom"></div>
-        </div>
-        <div class="carousel-slide">
-          <div class="slab-face slab-front"><img src="assets/carousel-sport.jpg" alt="Basketball player dunking"></div>
-          <div class="slab-face slab-back"></div>
-          <div class="slab-face slab-left"></div>
-          <div class="slab-face slab-right"></div>
-          <div class="slab-face slab-top"></div>
-          <div class="slab-face slab-bottom"></div>
-        </div>
+    <div class="image-strip-wrapper">
+      <div class="image-strip" id="carouselStrip">
+        <!-- Clone set for infinite loop (mirrors real idx 2 & 3) -->
+        <div class="strip-image clone"><img src="assets/carousel-campus.jpg" alt="Students on campus"></div>
+        <div class="strip-image clone"><img src="assets/carousel-sport.jpg" alt="Basketball player dunking"></div>
+        <!-- Real items -->
+        <div class="strip-image" data-idx="0"><img src="assets/carousel-basketball.jpg" alt="High school basketball player"></div>
+        <div class="strip-image" data-idx="1"><img src="assets/carousel-lab.jpg" alt="Students in science lab"></div>
+        <div class="strip-image" data-idx="2"><img src="assets/carousel-campus.jpg" alt="Students on campus"></div>
+        <div class="strip-image" data-idx="3"><img src="assets/carousel-sport.jpg" alt="Basketball player dunking"></div>
+        <!-- Clone set for infinite loop (mirrors real idx 0 & 1) -->
+        <div class="strip-image clone"><img src="assets/carousel-basketball.jpg" alt="High school basketball player"></div>
+        <div class="strip-image clone"><img src="assets/carousel-lab.jpg" alt="Students in science lab"></div>
       </div>
     </div>
   </section>
