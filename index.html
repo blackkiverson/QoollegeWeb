@@ -15,7 +15,10 @@
   <header class="header">
     <div class="header-container">
       <a href="#" class="logo">
-        <img src="assets/qoollege-logo.png" alt="Qoollege">
+        <picture>
+          <source srcset="assets/qoollege-logo.webp" type="image/webp">
+          <img src="assets/qoollege-logo.png" alt="Qoollege" decoding="async" fetchpriority="high">
+        </picture>
       </a>
       <nav class="nav">
         <a href="#features" class="nav-link">Features</a>
@@ -59,8 +62,14 @@
 
       <!-- Scholarship Finder Preview Image -->
       <div class="finder-card">
-        <img src="assets/HeroImage.png" alt="Qoollege Scholarship Finder — Explore Financial Aids" class="finder-card-img finder-dark">
-        <img src="assets/HeroImageLight.png" alt="Qoollege Scholarship Finder — Explore Financial Aids" class="finder-card-img finder-light">
+        <picture>
+          <source srcset="assets/HeroImage.webp" type="image/webp">
+          <img src="assets/HeroImage.png" alt="Qoollege Scholarship Finder — Explore Financial Aids" class="finder-card-img finder-dark" decoding="async" fetchpriority="high">
+        </picture>
+        <picture>
+          <source srcset="assets/HeroImageLight.webp" type="image/webp">
+          <img src="assets/HeroImageLight.png" alt="Qoollege Scholarship Finder — Explore Financial Aids" class="finder-card-img finder-light" decoding="async" fetchpriority="high">
+        </picture>
       </div>
     </div>
   </section>
@@ -71,16 +80,40 @@
     <div class="image-strip-wrapper">
       <div class="image-strip" id="imageStrip">
         <!-- Clone set for infinite loop (mirrors real idx 2 & 3) -->
-        <div class="strip-image clone"><img src="assets/lab.jpg" alt="High school students in science lab"></div>
-        <div class="strip-image clone"><img src="assets/mixed.jpg" alt="High school basketball player dribbling"></div>
+        <div class="strip-image clone"><picture>
+            <source srcset="assets/lab.webp" type="image/webp">
+            <img src="assets/lab.jpg" alt="High school students in science lab" decoding="async" loading="lazy">
+          </picture></div>
+        <div class="strip-image clone"><picture>
+            <source srcset="assets/mixed.webp" type="image/webp">
+            <img src="assets/mixed.jpg" alt="High school basketball player dribbling" decoding="async" loading="lazy">
+          </picture></div>
         <!-- Real items -->
-        <div class="strip-image" data-idx="0"><img src="assets/sport.jpg" alt="High school athlete celebrating on court"></div>
-        <div class="strip-image" data-idx="1"><img src="assets/class.jpg" alt="High school students studying outside school"></div>
-        <div class="strip-image" data-idx="2"><img src="assets/lab.jpg" alt="High school students in science lab"></div>
-        <div class="strip-image" data-idx="3"><img src="assets/mixed.jpg" alt="High school basketball player dribbling"></div>
+        <div class="strip-image" data-idx="0"><picture>
+            <source srcset="assets/sport.webp" type="image/webp">
+            <img src="assets/sport.jpg" alt="High school athlete celebrating on court" decoding="async">
+          </picture></div>
+        <div class="strip-image" data-idx="1"><picture>
+            <source srcset="assets/class.webp" type="image/webp">
+            <img src="assets/class.jpg" alt="High school students studying outside school" decoding="async">
+          </picture></div>
+        <div class="strip-image" data-idx="2"><picture>
+            <source srcset="assets/lab.webp" type="image/webp">
+            <img src="assets/lab.jpg" alt="High school students in science lab" decoding="async" loading="lazy">
+          </picture></div>
+        <div class="strip-image" data-idx="3"><picture>
+            <source srcset="assets/mixed.webp" type="image/webp">
+            <img src="assets/mixed.jpg" alt="High school basketball player dribbling" decoding="async" loading="lazy">
+          </picture></div>
         <!-- Clone set for infinite loop (mirrors real idx 0 & 1) -->
-        <div class="strip-image clone"><img src="assets/sport.jpg" alt="High school athlete celebrating on court"></div>
-        <div class="strip-image clone"><img src="assets/class.jpg" alt="High school students studying outside school"></div>
+        <div class="strip-image clone"><picture>
+            <source srcset="assets/sport.webp" type="image/webp">
+            <img src="assets/sport.jpg" alt="High school athlete celebrating on court" decoding="async" loading="lazy">
+          </picture></div>
+        <div class="strip-image clone"><picture>
+            <source srcset="assets/class.webp" type="image/webp">
+            <img src="assets/class.jpg" alt="High school students studying outside school" decoding="async" loading="lazy">
+          </picture></div>
       </div>
     </div>
 
@@ -327,7 +360,10 @@
       <div class="footer-grid">
         <!-- Brand column -->
         <div class="footer-brand">
-          <img src="assets/qoollege-logo.png" alt="Qoollege" class="footer-logo">
+          <picture>
+            <source srcset="assets/qoollege-logo.webp" type="image/webp">
+            <img src="assets/qoollege-logo.png" alt="Qoollege" class="footer-logo" loading="lazy" decoding="async">
+          </picture>
           <p class="footer-tagline">Empowering students with AI-powered college guidance, personalized recommendations, and expert counseling to find their perfect academic match.</p>
           <div class="footer-socials">
             <a href="#" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" fill="currentColor"/></svg></a>
@@ -773,14 +809,8 @@
     timer = setInterval(next, 3000);
   }
 
-  // Click to select
-  realSlides.forEach(function(slide, i) {
-    slide.addEventListener('click', function() {
-      clearInterval(timer);
-      activate(i, true);
-      startLoop();
-    });
-  });
+  // Note: carousel is auto-playing / non-interactive by design — no click handlers,
+  // no pointer cursor. See boss feedback: affordance was unclear when it was clickable.
 
   // Suppress all slide transitions on initial load, then enable
   allSlides.forEach(function(s) { s.style.transition = 'none'; });

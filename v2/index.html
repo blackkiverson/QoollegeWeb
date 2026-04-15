@@ -18,7 +18,10 @@
   <!-- ===== NAV ===== -->
   <header class="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo"><img src="../assets/qoollege-logo.png" alt="Qoollege" class="nav-logo-img"></a>
+      <a href="#" class="nav-logo"><picture>
+          <source srcset="../assets/qoollege-logo.webp" type="image/webp">
+          <img src="../assets/qoollege-logo.png" alt="Qoollege" class="nav-logo-img" decoding="async" fetchpriority="high">
+        </picture></a>
       <nav class="nav-links">
         <a href="#features">Features</a>
         <a href="#athletes">Athletes</a>
@@ -106,16 +109,40 @@
     <div class="image-strip-wrapper">
       <div class="image-strip" id="carouselStrip">
         <!-- Clone set for infinite loop (mirrors real idx 2 & 3) -->
-        <div class="strip-image clone"><img src="assets/carousel-campus.jpg" alt="Students on campus"></div>
-        <div class="strip-image clone"><img src="assets/carousel-sport.jpg" alt="Basketball player dunking"></div>
+        <div class="strip-image clone"><picture>
+            <source srcset="assets/carousel-campus.webp" type="image/webp">
+            <img src="assets/carousel-campus.jpg" alt="Students on campus" decoding="async" loading="lazy">
+          </picture></div>
+        <div class="strip-image clone"><picture>
+            <source srcset="assets/carousel-sport.webp" type="image/webp">
+            <img src="assets/carousel-sport.jpg" alt="Basketball player dunking" decoding="async" loading="lazy">
+          </picture></div>
         <!-- Real items -->
-        <div class="strip-image" data-idx="0"><img src="assets/carousel-basketball.jpg" alt="High school basketball player"></div>
-        <div class="strip-image" data-idx="1"><img src="assets/carousel-lab.jpg" alt="Students in science lab"></div>
-        <div class="strip-image" data-idx="2"><img src="assets/carousel-campus.jpg" alt="Students on campus"></div>
-        <div class="strip-image" data-idx="3"><img src="assets/carousel-sport.jpg" alt="Basketball player dunking"></div>
+        <div class="strip-image" data-idx="0"><picture>
+            <source srcset="assets/carousel-basketball.webp" type="image/webp">
+            <img src="assets/carousel-basketball.jpg" alt="High school basketball player" decoding="async">
+          </picture></div>
+        <div class="strip-image" data-idx="1"><picture>
+            <source srcset="assets/carousel-lab.webp" type="image/webp">
+            <img src="assets/carousel-lab.jpg" alt="Students in science lab" decoding="async">
+          </picture></div>
+        <div class="strip-image" data-idx="2"><picture>
+            <source srcset="assets/carousel-campus.webp" type="image/webp">
+            <img src="assets/carousel-campus.jpg" alt="Students on campus" decoding="async" loading="lazy">
+          </picture></div>
+        <div class="strip-image" data-idx="3"><picture>
+            <source srcset="assets/carousel-sport.webp" type="image/webp">
+            <img src="assets/carousel-sport.jpg" alt="Basketball player dunking" decoding="async" loading="lazy">
+          </picture></div>
         <!-- Clone set for infinite loop (mirrors real idx 0 & 1) -->
-        <div class="strip-image clone"><img src="assets/carousel-basketball.jpg" alt="High school basketball player"></div>
-        <div class="strip-image clone"><img src="assets/carousel-lab.jpg" alt="Students in science lab"></div>
+        <div class="strip-image clone"><picture>
+            <source srcset="assets/carousel-basketball.webp" type="image/webp">
+            <img src="assets/carousel-basketball.jpg" alt="High school basketball player" decoding="async" loading="lazy">
+          </picture></div>
+        <div class="strip-image clone"><picture>
+            <source srcset="assets/carousel-lab.webp" type="image/webp">
+            <img src="assets/carousel-lab.jpg" alt="Students in science lab" decoding="async" loading="lazy">
+          </picture></div>
       </div>
     </div>
   </section>
@@ -144,7 +171,10 @@
 
   <!-- ===== SCHOLARSHIP FINDER PREVIEW ===== -->
   <section class="finder-preview">
-    <img src="assets/scholarship-finder.png" alt="Qoollege Scholarship Finder — Explore Financial Aids" loading="lazy">
+    <picture>
+      <source srcset="assets/scholarship-finder.webp" type="image/webp">
+      <img src="assets/scholarship-finder.png" alt="Qoollege Scholarship Finder — Explore Financial Aids" loading="lazy" decoding="async">
+    </picture>
   </section>
 
   <!-- ===== FEATURES GRID ===== -->
@@ -237,7 +267,10 @@
             platform. Others charge $13K+ for this. We do it for a fraction.</p>
         </div>
         <div class="trio-card-right">
-          <img src="assets/qoollege-plus-logo.png" alt="Qoollege+" class="trio-qplus-logo-img">
+          <picture>
+            <source srcset="assets/qoollege-plus-logo.webp" type="image/webp">
+            <img src="assets/qoollege-plus-logo.png" alt="Qoollege+" class="trio-qplus-logo-img" loading="lazy" decoding="async">
+          </picture>
           <a href="#" class="trio-btn-gold-wrap">
             <img src="assets/gold-button.svg" alt="Book Free Consultation" class="trio-btn-gold-img">
           </a>
@@ -384,7 +417,10 @@
     <div class="footer-inner">
       <div class="footer-cols">
         <div class="footer-col footer-col--brand">
-          <div class="footer-logo"><img src="../assets/qoollege-logo.png" alt="Qoollege" class="footer-logo-img"></div>
+          <div class="footer-logo"><picture>
+              <source srcset="../assets/qoollege-logo.webp" type="image/webp">
+              <img src="../assets/qoollege-logo.png" alt="Qoollege" class="footer-logo-img" loading="lazy" decoding="async">
+            </picture></div>
           <p>Empowering students with AI-powered college guidance, personalized recommendations, and expert counseling
             to find their perfect academic match.</p>
           <div class="footer-connect">

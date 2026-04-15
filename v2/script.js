@@ -94,14 +94,8 @@
     timer = setInterval(next, 3000);
   }
 
-  // Click to select
-  realSlides.forEach(function (slide, i) {
-    slide.addEventListener('click', function () {
-      clearInterval(timer);
-      activate(i, true);
-      startLoop();
-    });
-  });
+  // Note: carousel is auto-playing / non-interactive by design — no click handlers,
+  // no pointer cursor. See boss feedback: affordance was unclear when it was clickable.
 
   // Suppress all slide transitions on initial load, then enable
   allSlides.forEach(function (s) { s.style.transition = 'none'; });
