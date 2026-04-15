@@ -797,8 +797,20 @@
       strip.style.transform = 'translateX(' + getOffset(cloneIdx) + 'px)';
 
       setTimeout(function() {
-        isTransitioning = false;
+        // Silent snap back to the real first slide. Suppress *all* slide
+        // transitions (width, filter, transform on each .strip-image) during
+        // the reposition, otherwise the real slide visibly "grows in" from
+        // its neighbor state and breaks the infinite-loop illusion.
+        allSlides.forEach(function(s) { s.style.transition = 'none'; });
         activate(0, false);
+        strip.offsetHeight; // force reflow
+        requestAnimationFrame(function() {
+          allSlides.forEach(function(s) { s.style.transition = ''; });
+          isTransitioning = false;
+          // Reset the interval so pacing stays consistent after the wrap
+          clearInterval(timer);
+          startLoop();
+        });
       }, 620);
     } else {
       activate(nextReal, true);
