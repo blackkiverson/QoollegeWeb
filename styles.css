@@ -754,16 +754,19 @@ ul {
 /* Tagline caption overlay — visible only on the active slide */
 .strip-caption {
   position: absolute;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 3;
+  padding: 32px 18px 18px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.35) 60%, transparent 100%);
+  border-radius: 0 0 18px 18px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.35;
   color: #fff;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 0.5s ease, transform 0.5s ease;
