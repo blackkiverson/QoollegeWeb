@@ -751,6 +751,30 @@ ul {
   opacity: 1;
 }
 
+/* Tagline caption overlay — visible only on the active slide */
+.strip-caption {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 3;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.strip-image.active .strip-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .stats-row {
   display: flex;
   justify-content: center;

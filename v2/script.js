@@ -9,7 +9,7 @@
   var realSlides = strip.querySelectorAll('.strip-image[data-idx]');
   if (!realSlides.length) return;
 
-  var total = realSlides.length; // 4
+  var total = realSlides.length; // 6
   var clonesBefore = 2;
   var current = 0; // index into real slides (0-3)
   var timer = null;
